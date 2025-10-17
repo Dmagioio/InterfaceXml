@@ -10,13 +10,24 @@
         android:id="@+id/tvMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Це кастомний діалог!"
-        android:textSize="18sp"
-        android:layout_marginBottom="10dp" />
+        android:layout_marginBottom="10dp"
+        android:text="Виберіть мову програмування!"
+        android:textSize="18sp" />
 
     <Button
-        android:id="@+id/btnClose"
-        android:text="Закрити"
+        android:id="@+id/btnJava"
+        android:text="Java"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/btnPython"
+        android:text="Python"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <Button
+        android:id="@+id/btnKotlin"
+        android:text="Kotlin"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"/>
 </LinearLayout>
