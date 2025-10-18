@@ -26,10 +26,6 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnClick.setOnClickListener {
 
-            val dialogFragment = LanguageSelectionDialogFragment()
-            dialogFragment.show(supportFragmentManager, "LanguageSelectionDialog")
-
-
             binding.tvReplacementWord.text = "Good job!"
             binding.tvReplacementAndroid.text = "Good job!"
 
@@ -47,42 +43,14 @@ class MainActivity : AppCompatActivity() {
             fadeInAnimator.duration = 1000
             fadeInAnimator.start()
 
-            val slideUpFadeInAnimation = AnimationUtils.loadAnimation(this, R.anim.slide_up_and_fade_in)
+            val slideUpFadeInAnimation =
+                AnimationUtils.loadAnimation(this, R.anim.slide_up_and_fade_in)
             binding.tvReplacementAndroid.startAnimation(slideUpFadeInAnimation)
 
-//            val inflater = layoutInflater
-//            val layout = inflater.inflate(R.layout.custom_toast, null)
-//
-//            val toast = Toast(applicationContext)
-//            toast.duration = Toast.LENGTH_SHORT
-//            toast.view = layout
-//            toast.show()
-
-//            Snackbar.make(binding.root, "Файл видалено", Snackbar.LENGTH_LONG)
-//                .setAction("Відмінити") {
-//                    Toast.makeText(this, "Відмінено", Toast.LENGTH_SHORT).show()
-//                }
-//                .show()
         }
-//
-//        val dialogView = layoutInflater.inflate(R.layout.custom_dialog, null)
-//        val dialog = AlertDialog.Builder(this)
-//            .setView(dialogView)
-//            .create()
-//
-//        dialogView.findViewById<Button>(R.id.btnJava).setOnClickListener {
-//            Toast.makeText(this, "Вибрано: Java", Toast.LENGTH_SHORT).show()
-//            dialog.dismiss()
-//        }
-//        dialogView.findViewById<Button>(R.id.btnPython).setOnClickListener {
-//            Toast.makeText(this, "Вибрано: Python", Toast.LENGTH_SHORT).show()
-//            dialog.dismiss()
-//        }
-//        dialogView.findViewById<Button>(R.id.btnKotlin).setOnClickListener {
-//            Toast.makeText(this, "Вибрано: Kotlin", Toast.LENGTH_SHORT).show()
-//            dialog.dismiss()
-//        }
-//        dialog.show()
 
+        supportFragmentManager.beginTransaction()
+            .replace(R.id.fragmentContainer, ExampleFragment())
+            .commit()
     }
 }

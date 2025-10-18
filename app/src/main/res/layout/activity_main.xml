@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:background="@color/black"
         android:fontFamily="@font/nunito_bold"
-        android:text="Hello Word!"
+        android:text="Hello World!"
         android:textColor="@color/white"
         android:layout_marginBottom="10dp"
         android:textSize="25sp"
@@ -60,5 +60,14 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/tvReplacementAndroid" />
 
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/fragmentContainer"
+        android:name="com.example.learntestcomplete.ExampleFragment"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/tvTimer"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
