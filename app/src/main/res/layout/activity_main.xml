@@ -86,6 +86,7 @@
         android:layout_height="200dp"
         android:contentDescription="Фото кота"
         android:src="@drawable/fon"
+
         android:scaleType="centerCrop"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

@@ -3,18 +3,13 @@ package com.example.learntestcomplete
 import android.animation.ObjectAnimator
 import android.os.Bundle
 import android.view.animation.AnimationUtils
-import android.widget.Button
-import android.widget.TextView
-import android.widget.Toast
-import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.animation.with
 import androidx.lifecycle.lifecycleScope
+import com.bumptech.glide.Glide
 import com.example.learntestcomplete.databinding.ActivityMainBinding
-import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
-import com.bumptech.glide.Glide
+import coil.load
 
 
 class MainActivity : AppCompatActivity() {
@@ -25,6 +20,13 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.imageView.load("https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7")
+
+        binding.imageView.alpha = 0f
+        val fadeInAnimator = ObjectAnimator.ofFloat(binding.imageView, "alpha", 0f, 1f)
+        fadeInAnimator.duration = 1000
+        fadeInAnimator.start()
 
         binding.btnClick.setOnClickListener {
 
@@ -51,10 +53,19 @@ class MainActivity : AppCompatActivity() {
 
             binding.imageView.setImageResource(R.drawable.cat)
 
+            binding.imageView.alpha = 0f
+            val fadeInAnimator2 = ObjectAnimator.ofFloat(binding.imageView, "alpha", 0f, 1f)
+            fadeInAnimator2.duration = 1000
+            fadeInAnimator2.start()
+
         }
 
         binding.btnClick2.setOnClickListener {
             binding.imageView.setImageResource(R.drawable.dog)
+            binding.imageView.alpha = 0f
+            val fadeInAnimator = ObjectAnimator.ofFloat(binding.imageView, "alpha", 0f, 1f)
+            fadeInAnimator.duration = 1000
+            fadeInAnimator.start()
         }
 
         supportFragmentManager.beginTransaction()
