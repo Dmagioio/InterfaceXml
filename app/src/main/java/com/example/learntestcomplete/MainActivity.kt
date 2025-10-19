@@ -8,11 +8,13 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.animation.with
 import androidx.lifecycle.lifecycleScope
 import com.example.learntestcomplete.databinding.ActivityMainBinding
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import com.bumptech.glide.Glide
 
 
 class MainActivity : AppCompatActivity() {
@@ -47,10 +49,24 @@ class MainActivity : AppCompatActivity() {
                 AnimationUtils.loadAnimation(this, R.anim.slide_up_and_fade_in)
             binding.tvReplacementAndroid.startAnimation(slideUpFadeInAnimation)
 
+            binding.imageView.setImageResource(R.drawable.cat)
+
+        }
+
+        binding.btnClick2.setOnClickListener {
+            binding.imageView.setImageResource(R.drawable.dog)
         }
 
         supportFragmentManager.beginTransaction()
             .replace(R.id.fragmentContainer, ExampleFragment())
             .commit()
+
+        binding.imageView.setOnClickListener {
+            val imageView = binding.imageView
+            Glide.with(this)
+                .asGif()
+                .load(R.drawable.cat2)
+                .into(imageView)
+        }
     }
 }
