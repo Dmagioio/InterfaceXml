@@ -61,6 +61,10 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.btnClick2.setOnClickListener {
+
+            val bottomSheet = BottomSheetExample()
+            bottomSheet.show(supportFragmentManager, "BottomSheetExample")
+
             binding.imageView.setImageResource(R.drawable.dog)
             binding.imageView.alpha = 0f
             val fadeInAnimator = ObjectAnimator.ofFloat(binding.imageView, "alpha", 0f, 1f)
