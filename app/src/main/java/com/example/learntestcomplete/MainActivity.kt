@@ -9,6 +9,7 @@ import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.Glide
 import com.example.learntestcomplete.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
+import com.google.android.material.tabs.TabLayoutMediator
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
@@ -45,6 +46,17 @@ class MainActivity : AppCompatActivity() {
             override fun onSlide(bottomSheet: View, slideOffset: Float) {
             }
         })
+
+        val adapter = TabsAdapter(this)
+        binding.viewPager.adapter = adapter
+
+        TabLayoutMediator(binding.tabLayout, binding.viewPager) { tab, position ->
+            when (position) {
+                0 -> tab.text = "Головна"
+                1 -> tab.text = "Профіль"
+                2 -> tab.text = "Налаштування"
+            }
+        }.attach()
 
         Glide.with(this)
             .load("https://www.nylabone.com/-/media/project/oneweb/nylabone/images/dog101/10-intelligent-dog-breeds/golden-retriever-tongue-out.jpg?h=430&w=710&hash=7FEB820D235A44B76B271060E03572C7")
