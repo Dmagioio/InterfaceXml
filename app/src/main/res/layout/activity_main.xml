@@ -8,14 +8,16 @@
     tools:context=".MainActivity">
 
     <LinearLayout
+        android:id="@+id/linerPager"
         android:layout_width="match_parent"
-        android:layout_height="110dp"
+        android:layout_height="150dp"
         android:orientation="vertical">
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/tabLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
             app:tabIndicatorColor="@color/black"
             app:tabSelectedTextColor="@color/black"
             app:tabTextColor="@color/darker_gray" />
@@ -23,7 +25,7 @@
         <androidx.viewpager2.widget.ViewPager2
             android:id="@+id/viewPager"
             android:layout_width="match_parent"
-            android:layout_height="162dp"
+            android:layout_height="100dp"
             android:layout_weight="1" />
     </LinearLayout>
 
@@ -32,97 +34,58 @@
         android:layout_height="match_parent"
         android:padding="24dp">
 
-        <TextView
-            android:id="@+id/tvTimer"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/nunito_bold"
-            android:text="0"
-            android:textColor="@color/black"
-            android:layout_marginBottom="10dp"
-            android:textSize="35sp"
-            app:layout_constraintBottom_toTopOf="@+id/tvReplacementWord"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tvReplacementWord"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@color/black"
-            android:fontFamily="@font/nunito_bold"
-            android:text="Hello World!"
-            android:textColor="@color/white"
-            android:layout_marginBottom="10dp"
-            android:textSize="25sp"
-            app:layout_constraintBottom_toTopOf="@+id/tvReplacementAndroid"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
-
-        <TextView
-            android:id="@+id/tvReplacementAndroid"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Hello Android!"
-            android:fontFamily="@font/nunito_bold"
-            android:textSize="25sp"
-            android:textColor="@color/white"
-            android:background="@color/black"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
-
-        <Button
-            android:id="@+id/btnClick"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:text="Click"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/tvReplacementAndroid" />
-
-        <Button
-            android:id="@+id/btnClick2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Click"
-            android:textSize="20sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btnClick" />
-
         <androidx.fragment.app.FragmentContainerView
             android:id="@+id/fragmentContainer"
-            android:name="com.example.learntestcomplete.ExampleFragment"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layout_constraintBottom_toTopOf="@+id/tvTimer"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
-
-        <ImageView
-            android:id="@+id/imageView"
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:contentDescription="Фото кота"
-            android:src="@drawable/fon"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
 
         <Button
             android:id="@+id/btnShowSheet"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:gravity="center"
             android:text="Показати Bottom Sheet"
-            app:layout_constraintBottom_toTopOf="@+id/tvTimer"
+            android:layout_marginBottom="200dp"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <LinearLayout
+            android:id="@+id/linearEdit"
+            android:layout_width="345dp"
+            android:layout_height="234dp"
+            android:orientation="vertical"
+            android:gravity="center|top"
+            android:padding="16dp"
+            app:layout_constraintBottom_toTopOf="@+id/btnShowSheet"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+            <EditText
+                android:id="@+id/editTextName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Введіть ім'я"
+                android:inputType="textPersonName" />
+
+            <Button
+                android:id="@+id/buttonShow"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Показати ім'я" />
+
+            <TextView
+                android:id="@+id/textViewResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="18sp" />
+
+        </LinearLayout>
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
