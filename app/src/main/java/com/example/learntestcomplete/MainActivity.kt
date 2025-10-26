@@ -19,8 +19,18 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.buttonShow.setOnClickListener {
-            val name = binding.editTextName.text.toString()
-            binding.textViewResult.text = "Привіт, $name!"
+            binding.buttonShow.setOnClickListener {
+                val name = binding.editTextName.text.toString()
+
+                if (name.length < 3) {
+                    binding.editTextName.error = "Мінімум 3 символи"
+                    binding.textViewResult.text = ""
+                } else {
+                    binding.editTextName.error = null
+                    binding.textViewResult.text = "Привіт, $name!"
+                }
+            }
+
         }
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
