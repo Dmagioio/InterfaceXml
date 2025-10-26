@@ -1,7 +1,8 @@
 package com.example.learntestcomplete
 
-import android.animation.ObjectAnimator
 import android.os.Bundle
+import android.text.Editable
+import android.text.TextWatcher
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import com.example.learntestcomplete.databinding.ActivityMainBinding
@@ -18,11 +19,17 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        binding.buttonShow.setOnClickListener {
-            binding.buttonShow.setOnClickListener {
-                val name = binding.editTextName.text.toString()
+        binding.editTextName.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
 
-                if (name.length < 3) {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val name = s.toString().trim()
+
+                if (name.isEmpty()) {
+                    binding.editTextName.error = "Введіть ім'я"
+                    binding.textViewResult.text = ""
+                } else if (name.length < 3) {
                     binding.editTextName.error = "Мінімум 3 символи"
                     binding.textViewResult.text = ""
                 } else {
@@ -31,7 +38,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-        }
+            override fun afterTextChanged(s: Editable?) {
+            }
+        })
 
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
@@ -66,6 +75,5 @@ class MainActivity : AppCompatActivity() {
                 2 -> tab.text = "Налаштування"
             }
         }.attach()
-
     }
 }
