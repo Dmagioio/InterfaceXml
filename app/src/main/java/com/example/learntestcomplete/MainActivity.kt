@@ -29,13 +29,14 @@ class MainActivity : AppCompatActivity() {
 
         setSupportActionBar(binding.toolbar)
 
-        val toggle = ActionBarDrawerToggle(
-            this, binding.drawerLayout, binding.toolbar,
-            R.string.navigation_drawer_open,
-            R.string.navigation_drawer_close
-        )
-        binding.drawerLayout.addDrawerListener(toggle)
-        toggle.syncState()
+        binding.toolbar.setNavigationIcon(R.drawable.ic_menu)
+        binding.toolbar.setNavigationOnClickListener {
+            if (binding.drawerLayout.isDrawerOpen(GravityCompat.END)) {
+                binding.drawerLayout.closeDrawer(GravityCompat.END)
+            } else {
+                binding.drawerLayout.openDrawer(GravityCompat.END)
+            }
+        }
 
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -43,7 +44,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_profile -> showToast("Профіль")
                 R.id.nav_settings -> showToast("Налаштування")
             }
-            binding.drawerLayout.closeDrawer(GravityCompat.START)
+            binding.drawerLayout.closeDrawer(GravityCompat.END)
             true
         }
 
