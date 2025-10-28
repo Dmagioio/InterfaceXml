@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
@@ -36,6 +37,21 @@ class MainActivity : AppCompatActivity() {
             } else {
                 binding.drawerLayout.openDrawer(GravityCompat.END)
             }
+        }
+
+        val fruits = arrayOf("Яблуко", "Банан", "Апельсин", "Ківі", "Виноград", "Яблуко", "Банан", "Апельсин", "Ківі", "Виноград")
+
+        val adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            fruits
+        )
+
+        binding.myListView.adapter = adapter
+
+        binding.myListView.setOnItemClickListener { _, _, position, _ ->
+            val clickedItem = fruits[position]
+            Toast.makeText(this, "Ви вибрали: $clickedItem", Toast.LENGTH_SHORT).show()
         }
 
         binding.navigationView.setNavigationItemSelectedListener {
