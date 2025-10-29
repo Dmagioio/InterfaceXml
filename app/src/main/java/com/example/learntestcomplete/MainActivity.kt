@@ -3,12 +3,17 @@ package com.example.learntestcomplete
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.view.LayoutInflater
 import android.view.View
+import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.learntestcomplete.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayoutMediator
@@ -39,20 +44,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val fruits = arrayOf("Яблуко", "Банан", "Апельсин", "Ківі", "Виноград", "Яблуко", "Банан", "Апельсин", "Ківі", "Виноград")
+        val fruits = listOf("Яблуко", "Банан", "Апельсин", "Ківі", "Виноград", "Яблуко", "Банан", "Апельсин", "Ківі", "Виноград" )
 
-        val adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            fruits
-        )
-
-        binding.myListView.adapter = adapter
-
-        binding.myListView.setOnItemClickListener { _, _, position, _ ->
-            val clickedItem = fruits[position]
-            Toast.makeText(this, "Ви вибрали: $clickedItem", Toast.LENGTH_SHORT).show()
-        }
+        binding.recyclerView.layoutManager = LinearLayoutManager(this)
+        binding.recyclerView.adapter = FruitAdapter(fruits)
 
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
@@ -110,4 +105,24 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
+}
+
+class FruitAdapter(private val fruits: List<String>) :
+    RecyclerView.Adapter<FruitAdapter.FruitViewHolder>() {
+
+    class FruitViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        val textView: TextView = itemView.findViewById(R.id.textView)
+    }
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FruitViewHolder {
+        val view = LayoutInflater.from(parent.context)
+            .inflate(R.layout.item_fruit, parent, false)
+        return FruitViewHolder(view)
+    }
+
+    override fun onBindViewHolder(holder: FruitViewHolder, position: Int) {
+        holder.textView.text = fruits[position]
+    }
+
+    override fun getItemCount() = fruits.size
 }

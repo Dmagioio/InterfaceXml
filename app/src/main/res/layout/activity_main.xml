@@ -28,21 +28,14 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             android:layout_marginTop="?attr/actionBarSize">
 
-            <LinearLayout
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerView"
                 android:layout_width="match_parent"
-                android:layout_height="250dp"
-                android:orientation="vertical"
-                android:padding="10dp"
+                android:layout_height="0dp"
                 app:layout_constraintBottom_toTopOf="@+id/linearEdit"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                app:layout_constraintTop_toTopOf="parent"
+                tools:layout_editor_absoluteX="24dp" />
 
-                <ListView
-                    android:id="@+id/myListView"
-                    android:layout_width="match_parent"
-                    android:layout_height="250dp" />
-            </LinearLayout>
 
             <Button
                 android:id="@+id/btnShowSheet"
