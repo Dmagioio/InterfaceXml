@@ -17,6 +17,10 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.learntestcomplete.databinding.ActivityMainBinding
 import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayoutMediator
+import android.animation.ObjectAnimator
+import android.animation.AnimatorSet
+import android.view.animation.AnimationUtils
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -33,6 +37,11 @@ class MainActivity : AppCompatActivity() {
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        val moveX = ObjectAnimator.ofFloat(binding.buttonShow, "translationX", 0f, 300f)
+        val rotate = ObjectAnimator.ofFloat(binding.buttonShow, "rotation", 0f, 60f)
+        val fade = ObjectAnimator.ofFloat(binding.buttonShow, "alpha", 1f, 0.5f, 1f)
+        val anim = AnimationUtils.loadAnimation(this, R.anim.fade_in)
+
         setSupportActionBar(binding.toolbar)
 
         binding.toolbar.setNavigationIcon(R.drawable.ic_menu)
@@ -44,7 +53,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val fruits = listOf("Яблуко", "Банан", "Апельсин", "Ківі", "Виноград", "Яблуко", "Банан", "Апельсин", "Ківі", "Виноград" )
+        val fruits = listOf("Яблуко", "Банан", "Апельсин", "Ківі", "Виноград", "Яблуко", "Банан", "Апельсин", "Ківі", "Виноград"  )
 
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = FruitAdapter(fruits)
@@ -82,10 +91,20 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
+        binding.buttonShow.setOnClickListener {
+            AnimatorSet().apply {
+                playTogether(moveX, rotate, fade)
+                duration = 1500
+                start()
+            }
+        }
+
         bottomSheetBehavior = BottomSheetBehavior.from(binding.bottomSheet)
         bottomSheetBehavior.state = BottomSheetBehavior.STATE_HIDDEN
 
         binding.btnShowSheet.setOnClickListener {
+            binding.btnShowSheet.startAnimation(anim)
+
             if (bottomSheetBehavior.state != BottomSheetBehavior.STATE_EXPANDED) {
                 bottomSheetBehavior.state = BottomSheetBehavior.STATE_EXPANDED
             } else {
