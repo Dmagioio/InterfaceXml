@@ -19,6 +19,7 @@ import com.google.android.material.bottomsheet.BottomSheetBehavior
 import com.google.android.material.tabs.TabLayoutMediator
 import android.animation.ObjectAnimator
 import android.animation.AnimatorSet
+import android.content.Intent
 import android.view.animation.AnimationUtils
 
 
@@ -61,7 +62,10 @@ class MainActivity : AppCompatActivity() {
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.nav_home -> showToast("Головна")
-                R.id.nav_profile -> showToast("Профіль")
+                R.id.nav_profile -> {
+                    val intent = Intent(this, LearnLayouts::class.java)
+                    startActivity(intent)
+                }
                 R.id.nav_settings -> showToast("Налаштування")
             }
             binding.drawerLayout.closeDrawer(GravityCompat.END)
