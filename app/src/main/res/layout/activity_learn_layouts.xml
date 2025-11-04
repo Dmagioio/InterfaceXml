@@ -46,7 +46,38 @@
                 android:layout_gravity="center|bottom"/>
         </FrameLayout>
 
-    </LinearLayout>
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="16dp">
 
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Title"
+                android:textSize="24sp"
+                android:layout_centerHorizontal="true"/>
+
+            <Button
+                android:id="@+id/okBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="OK"
+                android:layout_below="@id/title"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"/>
+
+            <Button
+                android:id="@+id/cancelBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cancel"
+                android:layout_below="@id/okBtn"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="16dp"/>
+        </RelativeLayout>
+
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
