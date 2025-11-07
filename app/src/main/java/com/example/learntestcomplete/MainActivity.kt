@@ -56,6 +56,15 @@ class MainActivity : AppCompatActivity() {
 
         val fruits = listOf("Яблуко", "Банан", "Апельсин", "Ківі", "Виноград", "Яблуко", "Банан", "Апельсин", "Ківі", "Виноград"  )
 
+        val recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+
+        val users = listOf(
+            User("Alice", "alice@gmail.com"),
+            User("Bob", "bob@gmail.com"),
+            User("Charlie", "charlie@gmail.com"),
+            User("Diana", "diana@gmail.com")
+        )
+
         binding.recyclerView.layoutManager = LinearLayoutManager(this)
         binding.recyclerView.adapter = FruitAdapter(fruits)
 
